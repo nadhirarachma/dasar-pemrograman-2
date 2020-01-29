@@ -1,0 +1,17 @@
+image: gradle:6.1.1-jdk13
+
+variables:
+  GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+
+stages:
+  - build
+
+build:
+  stage: build
+  script: gradle --build-cache build
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    policy: push
+    paths:
+      - assignment-*/build
+      - assignment-*/.gradle
