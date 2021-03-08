@@ -7,4 +7,4 @@ Semester Genap 2019/2020
 
 Repositori ini merupakan repositori latihan yang digunakan sebagai pengantar tugas pemrograman. Silakan baca panduan [Getting Started Java Project][dokumen-getting-started] untuk memulai. Setelah mengikuti panduan tersebut, diharapkan mahasiswa menjadi familiar dengan *tools* yang digunakan pada tugas pemrograman.
 
-[dokumen-getting-started]: https://docs.google.com/document/d/1_HswwjG9qoUL1hHoQu0McqXYkYdRtT0d-nZA7yCYLpc/edit?usp=sharing
+[dokumen-getting-started]: https://docs.google.com/document/d/1FealXhUOzIGvNGKtMxSHOkY0GT4g5e5R6FSVSPK0kzk/edit?usp=sharing
