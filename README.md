@@ -1,7 +1,7 @@
 # Latihan Tugas Pemrograman
 
 CSGE601021 Dasar-Dasar Pemrograman 2 @ Fakultas Ilmu Komputer Universitas Indonesia,
-Semester Genap 2019/2020
+Semester Genap 2020/2021
 
 ***
 
