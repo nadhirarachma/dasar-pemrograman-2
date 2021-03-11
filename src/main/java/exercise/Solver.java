@@ -10,7 +10,7 @@ public class Solver {
     public boolean isExistTwoSum(int[] nums, int K) {
         for (int i = 0; i < nums.length; i++) {
         	for (int j = 0; j < nums.length; j++) {
-        		if (nums[i] + nums[j] == K) return true;
+        		if (i != j && nums[i] + nums[j] == K) return true;
         	}
         }
         return false;
