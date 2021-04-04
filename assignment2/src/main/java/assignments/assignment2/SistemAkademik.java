@@ -13,91 +13,169 @@ public class SistemAkademik {
     
     private Scanner input = new Scanner(System.in);
 
+    // Mengembalikan nama mahasiswa berdasarkan npmnya
     private Mahasiswa getMahasiswa(long npm) {
-        /* TODO: Implementasikan kode Anda di sini */
-        return null;
+        Mahasiswa namaMhs = null;
+
+        for (int x = 0; x < daftarMahasiswa.length; x++) {
+            if (daftarMahasiswa[x].getNPM() == npm) {
+                namaMhs = daftarMahasiswa[x];
+                break;
+            }
+        }
+    
+        return namaMhs;
     }
 
+    // Mengembalikan nama mata kuliah berdasarkan namanya
     private MataKuliah getMataKuliah(String namaMataKuliah) {
-        /* TODO: Implementasikan kode Anda di sini */
-        return null;
+        MataKuliah namaMatkul = null;
+
+        for (int y = 0; y < daftarMataKuliah.length; y++) {
+            if (daftarMataKuliah[y].getNama().equals(namaMataKuliah)) {
+                namaMatkul = daftarMataKuliah[y];
+                break;
+            }
+        }   
+
+        return namaMatkul;
     }
 
+    // Menambahkan mata kuliah yang diambil seorang mahasiswa
     private void addMatkul(){
         System.out.println("\n--------------------------ADD MATKUL--------------------------\n");
 
         System.out.print("Masukkan NPM Mahasiswa yang akan melakukan ADD MATKUL : ");
         long npm = Long.parseLong(input.nextLine());
+        Mahasiswa namaMhs = getMahasiswa(npm); // Membuat objek namaMhs yang mengembalikan nama mahasiswa berdasarkan npmnya
 
-        /* TODO: Implementasikan kode Anda di sini 
-        Jangan lupa lakukan validasi apabila banyaknya matkul yang diambil mahasiswa sudah 9*/
-
-        System.out.print("Banyaknya Matkul yang Ditambah: ");
-        int banyakMatkul = Integer.parseInt(input.nextLine());
-        System.out.println("Masukkan nama matkul yang ditambah");
-        for(int i=0; i<banyakMatkul; i++){
-            System.out.print("Nama matakuliah " + i+1 + " : ");
-            String namaMataKuliah = input.nextLine();
-            /* TODO: Implementasikan kode Anda di sini */
+        for (int m = 0; m < namaMhs.getMatKul().length; m++) {
+            if (namaMhs.getNPM() == npm) {
+                    System.out.print("Banyaknya Matkul yang Ditambah: ");
+                    int banyakMatkul = Integer.parseInt(input.nextLine());
+                    System.out.println("Masukkan nama matkul yang ditambah");
+                    for(int i=0; i < banyakMatkul; i++){
+                        System.out.print("Nama matakuliah " + i+1 + " : ");
+                        String namaMataKuliah = input.nextLine();
+                        namaMhs.addMatkul(getMataKuliah(namaMataKuliah)); // Menambahkan mata kuliah yang diambil seorang mahasiswa
+                    }
+                System.out.println("\nSilakan cek rekap untuk melihat hasil pengecekan IRS.\n");
+                break;
+            }
         }
-        System.out.println("\nSilakan cek rekap untuk melihat hasil pengecekan IRS.\n");
     }
 
+    // Drop mata kuliah yang diambil seorang mahasiswa
     private void dropMatkul(){
         System.out.println("\n--------------------------DROP MATKUL--------------------------\n");
 
         System.out.print("Masukkan NPM Mahasiswa yang akan melakukan DROP MATKUL : ");
         long npm = Long.parseLong(input.nextLine());
+        Mahasiswa namaMhs = getMahasiswa(npm); // Membuat objek yang mengembalikan nama mahasiswa
 
-       /* TODO: Implementasikan kode Anda di sini 
-        Jangan lupa lakukan validasi apabila mahasiswa belum mengambil mata kuliah*/
-
-        System.out.print("Banyaknya Matkul yang Di-drop: ");
-        int banyakMatkul = Integer.parseInt(input.nextLine());
-        System.out.println("Masukkan nama matkul yang di-drop:");
-        for(int i=0; i<banyakMatkul; i++){
-            System.out.print("Nama matakuliah " + i+1 + " : ");
-            String namaMataKuliah = input.nextLine();
-            /* TODO: Implementasikan kode Anda di sini */
-        }
-        System.out.println("\nSilakan cek rekap untuk melihat hasil pengecekan IRS.\n");
+        for (int n = 0; n < namaMhs.getMatKul().length; n++) {
+            if (namaMhs.getNPM() == npm) {
+                if (namaMhs.getJumlahMatkul() == 0) {
+                    System.out.println("[DITOLAK] Belum ada mata kuliah yang diambil.");
+                    break;
+                }
+                else {
+                    System.out.print("Banyaknya Matkul yang Di-drop: ");
+                    int banyakMatkul = Integer.parseInt(input.nextLine());
+                    System.out.println("Masukkan nama matkul yang di-drop:");
+                    for(int i=0; i<banyakMatkul; i++){
+                        System.out.print("Nama matakuliah " + i+1 + " : ");
+                        String namaMataKuliah = input.nextLine();
+                        namaMhs.dropMatkul(getMataKuliah(namaMataKuliah)); // Drop mata kuliah yang diambil seorang mahasiswa
+                        namaMhs.setTotalSKS(getMataKuliah(namaMataKuliah)); // Mengurangi total sks seorang mahasiswa
+                    }
+                    System.out.println("\nSilakan cek rekap untuk melihat hasil pengecekan IRS.\n");
+                }
+                break;
+            }
+        }  
     }
 
+    // Menampilkan ringkasan seorang mahasiswa
     private void ringkasanMahasiswa(){
         System.out.print("Masukkan npm mahasiswa yang akan ditunjukkan ringkasannya : ");
         long npm = Long.parseLong(input.nextLine());
+        Mahasiswa namaMhs = getMahasiswa(npm); // Membuat objek yang mengembalikan nama mahasiswa
 
-        // TODO: Isi sesuai format keluaran
-        System.out.println("\n--------------------------RINGKASAN--------------------------\n");
-        System.out.println("Nama: " + "");
-        System.out.println("NPM: " + npm);
-        System.out.println("Jurusan: " + "");
-        System.out.println("Daftar Mata Kuliah: ");
+        for (int a = 0; a < daftarMahasiswa.length; a++) {
+            if (namaMhs.getNPM() == npm) {
+                System.out.println("\n--------------------------RINGKASAN--------------------------\n");
+                System.out.println("Nama: " + this.getMahasiswa(npm));
+                System.out.println("NPM: " + npm);
+                System.out.println("Jurusan: " + namaMhs.getJurusan());
+                System.out.println("Daftar Mata Kuliah: ");
 
-        /* TODO: Cetak daftar mata kuliah 
-        Handle kasus jika belum ada mata kuliah yang diambil*/
+                if (namaMhs.getJumlahMatkul() == 0) {
+                    System.out.println("Belum ada mata kuliah yang diambil");
+                    System.out.println("Total SKS: " + namaMhs.getTotalSKS());
+                    System.out.println("Hasil Pengecekan IRS:\nIRS tidak bermasalah.");
+                    break;
+                }
 
-        System.out.println("Total SKS: " + "");
-        
-        System.out.println("Hasil Pengecekan IRS:");
-        /* TODO: Cetak hasil cek IRS
-        Handle kasus jika IRS tidak bermasalah */
+                else {
+
+                    // Mencetak daftar matakuliah yang diambil seorang mahasiswa
+                    for (int p = 0; p < namaMhs.getJumlahMatkul(); p++) {
+                        System.out.println((p+1) + ". " + namaMhs.getMatKul()[p]);
+                    }
+
+                    System.out.println("Total SKS: " + namaMhs.getTotalSKS());
+                    
+                    // Mengembalikan masalah IRS
+                    namaMhs.cekIRS();
+                    System.out.println("Hasil Pengecekan IRS:");
+                    if (namaMhs.getJumlahMasalahIRS() == 0) {
+                        System.out.println("IRS tidak bermasalah.");
+                        break;
+                    }
+                    else {
+
+                        // Mencetak daftar masalah IRS
+                        for (int p = 0; p < namaMhs.getJumlahMasalahIRS(); p++) {
+                            System.out.println((p+1) + ". " + namaMhs.getMasalahIRS()[p]);
+                        }
+                        break;
+                    }
+                }
+            }
+        }
     }
 
+    // Menampilkan ringkasan suatu mata kuliah
     private void ringkasanMataKuliah(){
         System.out.print("Masukkan nama mata kuliah yang akan ditunjukkan ringkasannya : ");
         String namaMataKuliah = input.nextLine();
-        
-        // TODO: Isi sesuai format keluaran
-        System.out.println("\n--------------------------RINGKASAN--------------------------\n");
-        System.out.println("Nama mata kuliah: " + "");
-        System.out.println("Kode: " + "");
-        System.out.println("SKS: " + "");
-        System.out.println("Jumlah mahasiswa: " + "");
-        System.out.println("Kapasitas: " + "");
-        System.out.println("Daftar mahasiswa yang mengambil mata kuliah ini: ");
-       /* TODO: Cetak hasil cek IRS
-        Handle kasus jika tidak ada mahasiswa yang mengambil */
+        MataKuliah namaMatkul = getMataKuliah(namaMataKuliah); // Membuat objek yang mengembalikan nama mata kuliah
+
+        for (int b = 0; b < daftarMataKuliah.length; b++) {
+            if (namaMatkul.getNama().equals(namaMataKuliah)) {
+                System.out.println("\n--------------------------RINGKASAN--------------------------\n");
+                System.out.println("Nama mata kuliah: " + namaMataKuliah);
+                System.out.println("Kode: " + namaMatkul.getKode());
+                System.out.println("SKS: " + namaMatkul.getSKS());
+                System.out.println("Jumlah mahasiswa: " + namaMatkul.getJumlahMahasiswa());
+                System.out.println("Kapasitas: " + namaMatkul.getKapasitas());
+                System.out.println("Daftar mahasiswa yang mengambil mata kuliah ini: ");
+
+                if (namaMatkul.getJumlahMahasiswa() == 0) {
+                    System.out.println("Belum ada mahasiswa yang mengambil mata kuliah ini.");
+                    break;
+                }
+                else {
+
+                    // Mencetak daftar mahasiswa yang mengambil suatu mata kuliah
+                    for (int p = 0; p < namaMatkul.getJumlahMahasiswa(); p++) {
+                    System.out.println((p+1) + ". " + namaMatkul.getDaftarMahasiswa()[p]);
+                    }
+                    break;
+                }
+            }
+        }
     }
 
     private void daftarMenu(){
@@ -144,11 +222,14 @@ public class SistemAkademik {
         System.out.println("Masukkan matkul yang ditambah");
         System.out.println("format: [Kode Matkul] [Nama Matkul] [SKS] [Kapasitas]");
 
-        for(int i=0; i<banyakMatkul; i++){
+        for(int i = 0; i < banyakMatkul; i++){
             String[] dataMatkul = input.nextLine().split(" ", 4);
             int sks = Integer.parseInt(dataMatkul[2]);
             int kapasitas = Integer.parseInt(dataMatkul[3]);
-            /* TODO: Buat instance mata kuliah dan masukkan ke dalam Array */
+
+            // Membuat instance MataKuliah dan dimasukkan ke dalam Array 
+            MataKuliah daftarMatkul = new MataKuliah(dataMatkul[0], dataMatkul[1], sks, kapasitas);
+            daftarMataKuliah[i] = daftarMatkul;
         }
 
         System.out.print("Banyaknya Mahasiswa di Fasilkom: ");
@@ -159,7 +240,10 @@ public class SistemAkademik {
         for(int i=0; i<banyakMahasiswa; i++){
             String[] dataMahasiswa = input.nextLine().split(" ", 2);
             long npm = Long.parseLong(dataMahasiswa[1]);
-            /* TODO: Buat instance mata kuliah dan masukkan ke dalam Array */
+            
+            // Membuat instance Mahasiswa dan dimasukkan ke dalam Array 
+            Mahasiswa daftarMhs = new Mahasiswa(dataMahasiswa[0], npm);
+            daftarMahasiswa[i] = daftarMhs;
         }
 
         daftarMenu();
@@ -169,8 +253,5 @@ public class SistemAkademik {
     public static void main(String[] args) {
         SistemAkademik program = new SistemAkademik();
         program.run();
-    }
-
-
-    
+    } 
 }
