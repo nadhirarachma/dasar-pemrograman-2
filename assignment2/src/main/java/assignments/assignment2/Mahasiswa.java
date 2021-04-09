@@ -89,14 +89,7 @@ public class Mahasiswa {
                     System.out.println("[DITOLAK] " + mataKuliah + " telah penuh kapasitasnya.");
                     break;
                 }
-                else if (this.getJumlahMatkul() + 1 >= 10) {
-                    System.out.println("[DITOLAK] Maksimal mata kuliah yang diambil hanya 10.");
-                    this.mataKuliah[i] = mataKuliah;
-                    this.totalSKS += this.mataKuliah[i].getSKS();
-                    this.mataKuliah[i].addMahasiswa(this);
-                    break;
-                }
-
+                
                 // Menambahkan mata kuliah ke daftar mata kuliah yang diambil saat ini dan menambahkan mahasiswa ke daftar mahasiswa yang mengambil mata kuliah tersebut
                 else {
                     this.mataKuliah[i] = mataKuliah;
@@ -106,11 +99,21 @@ public class Mahasiswa {
                 }
             }
             else {
-                if (this.mataKuliah[i].getNama().equals(mataKuliah.getNama())) {
-                    System.out.println("[DITOLAK] " + mataKuliah + " telah diambil sebelumnya.");
-                    break;
+                if (i != this.mataKuliah.length - 1) {
+                    if (this.mataKuliah[i].getNama().equals(mataKuliah.getNama())) {
+                        System.out.println("[DITOLAK] " + mataKuliah + " telah diambil sebelumnya.");
+                        break;
+                    }
                 }
-            } 
+
+                // Apabila hingga akhir loop tidak ada matakuliah yang sudah diambil dan jumlah mata kuliah lebih dari 10
+                else {
+                    if (this.getJumlahMatkul() >= 10) {
+                        System.out.println("[DITOLAK] Maksimal mata kuliah yang diambil hanya 10.");
+                        break;
+                    }
+                }
+            }
         }
     }
 
