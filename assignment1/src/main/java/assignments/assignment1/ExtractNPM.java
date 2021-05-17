@@ -76,23 +76,20 @@ public class ExtractNPM {
         String kodeJurusan = nomerNpm.substring(2,4);
         String daftarJurusan = "0102030405";
 
-        // Langsung mengembalikan false jika panjang npm kurang dari 14
         if (nomerNpm.length() < 14) {
             valid = false;
         }
 
         else {
-            // Mengembalikan true apabila kode jurusan terdapat dalam daftar jurusan
             if (daftarJurusan.contains(kodeJurusan)) {
                 valid = true;
 
-                // Mengembalikan false apabila umur kurang dari 15
                 if (Integer.parseInt(getUmur(nomerNpm)) < 15) {
                     valid = false;
                 } 
 
                 else {
-                    // Mengembalikan true apabila kode npm sama dengan digit terakhir npm
+        
                     if (nomerNpm.endsWith(getKodeNPM(nomerNpm))) {
                         valid = true;
                     }
@@ -124,7 +121,7 @@ public class ExtractNPM {
     }
 
     public static void main(String args[]) {
-        // Proses input oleh user
+        // Proses input dari user
         Scanner input = new Scanner(System.in);
         boolean exitFlag = false;
         while (!exitFlag) {
@@ -135,13 +132,12 @@ public class ExtractNPM {
             }
 
             else {
-                // Mencetak NPM tidak valid jika hasil validasi bernilai false dan langsung keluar dari loop
+
                 if (validate(npm) == false) {
                     System.out.println("NPM tidak valid!");
                     break;
                 }
 
-                // Mencetak hasil ekstraksi jika hasil validasi bernilai true dan keluar dari loop
                 else {
                     System.out.print(extract(npm));
                     break;
@@ -149,6 +145,6 @@ public class ExtractNPM {
             }
         }
         
-        input.close(); // Mengakhiri fungsi Scanner
+        input.close(); 
     }
 }

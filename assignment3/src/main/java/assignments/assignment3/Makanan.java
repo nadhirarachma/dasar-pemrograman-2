@@ -2,18 +2,25 @@ package assignments.assignment3;
 
 class Makanan {
 
-    /* TODO: Silahkan menambahkan visibility pada setiap method dan variabel apabila diperlukan */
+    private String nama;
 
-    String nama;
+    private long harga;
 
-    long harga;
-
+    // Constructor
     Makanan(String nama, long harga) {
-        /* TODO: implementasikan kode Anda di sini */
+        this.nama = nama;
+        this.harga = harga;
     }
 
-    String toString() {
-        /* TODO: implementasikan kode Anda di sini */
-        return "";
+    public String getNama() {
+        return this.nama;
+    }
+
+    public long getHarga() {
+        return this.harga;
+    }
+    
+    public String toString() {
+        return this.nama;
     }
 }

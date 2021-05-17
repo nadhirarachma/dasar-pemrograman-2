@@ -2,38 +2,87 @@ package assignments.assignment3;
 
 class MataKuliah {
 
-    /* TODO: Silahkan menambahkan visibility pada setiap method dan variabel apabila diperlukan */
-
-    String nama;
+    private String nama;
     
-    int kapasitas;
+    private int kapasitas;
 
-    Dosen dosen;
+    private Dosen dosen;
 
-    Mahasiswa[] daftarMahasiswa;
+    private Mahasiswa[] daftarMahasiswa = new Mahasiswa[100];
 
+    // Constructor
     MataKuliah(String nama, int kapasitas) {
-        /* TODO: implementasikan kode Anda di sini */
+        this.nama = nama;
+        this.kapasitas = kapasitas;
     }
 
-    void addMahasiswa(Mahasiswa mahasiswa) {
-        /* TODO: implementasikan kode Anda di sini */
+    // Getter untuk attribut mata kuliah yang mengembalikan nilai dari attribut 
+    public String getNama() {
+        return this.nama;
     }
 
-    void dropMahasiswa(Mahasiswa mahasiswa) {
-        /* TODO: implementasikan kode Anda di sini */
+    public int getKapasitas() {
+        return this.kapasitas;
     }
 
-    void addDosen(Dosen dosen) {
-        /* TODO: implementasikan kode Anda di sini */
+    public Dosen getDosen() {
+        return this.dosen;
     }
 
-    void dropDosen() {
-        /* TODO: implementasikan kode Anda di sini */
+    public Mahasiswa[] getDaftarMahasiswa() {
+        return this.daftarMahasiswa;
     }
 
-    String toString() {
-        /* TODO: implementasikan kode Anda di sini */
-        return "";
+    public int getJumlahMahasiswa() {
+        int jumlah = 0;
+        
+        for (Mahasiswa student : daftarMahasiswa) {
+            if (student != null) {
+                jumlah += 1;
+            }
+        }
+
+        return jumlah;
+    }
+
+    public void addMahasiswa(Mahasiswa mahasiswa) {
+        for (int i = 0; i < daftarMahasiswa.length; i++) {
+            if (daftarMahasiswa[i] == null) {
+                daftarMahasiswa[i] = mahasiswa;
+                break;
+            }
+        }
+    }
+
+    public void dropMahasiswa(Mahasiswa mahasiswa) {
+        Mahasiswa[] studentList = new Mahasiswa[this.kapasitas];
+        int num = 0;
+
+        // Menambahkan mahasiswa pada array baru jika mahasiswa tersebut tidak melakukan drop mata kuliah 
+        for (int j = 0; j < daftarMahasiswa.length; j++) {
+            if (daftarMahasiswa[j] != null) {
+                if (daftarMahasiswa[j].getNama().equals(mahasiswa.getNama())) {
+                    continue;
+                }
+                else {
+                    studentList[num++] = daftarMahasiswa[j];
+                }
+            }
+        }
+        this.daftarMahasiswa = studentList;
+    }
+
+    public void addDosen(Dosen lecturer) {
+        if (this.dosen == null) {
+            this.dosen = lecturer;
+        }
+    }
+
+    public void dropDosen() {
+        this.dosen = null;
+    }
+
+    public String toString() {
+        return this.nama;
     }
 }
