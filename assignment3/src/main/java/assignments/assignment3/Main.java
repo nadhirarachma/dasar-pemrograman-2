@@ -26,9 +26,9 @@ public class Main {
 
     // Mengembalikan nama mata kuliah berdasarkan namanya
     private static MataKuliah getMatkul(String namaMatkul) {
-        for (MataKuliah matkul : daftarMataKuliah){
-            if (matkul.getNama().equals(namaMatkul)){
-                return matkul;
+        for (int i = 0 ; i < getJumlahMatkul(); i++) {
+            if (daftarMataKuliah[i].getNama().equals(namaMatkul)) {
+                return daftarMataKuliah[i];
             }
         }
         return null;
@@ -68,7 +68,7 @@ public class Main {
         }
     }
 
-    public static void addElemenKantin(String nama) {
+    private static void addElemenKantin(String nama) {
         for (int k = 0; k < daftarElemenFasilkom.length; k++) {
             if (daftarElemenFasilkom[k] == null) {
                 ElemenKantin elemenKantin = new ElemenKantin(nama);
@@ -81,7 +81,7 @@ public class Main {
         }
     }
 
-    public static void menyapa(String objek1, String objek2) {
+    private static void menyapa(String objek1, String objek2) {
         ElemenFasilkom object1 = getElemen(objek1);
         ElemenFasilkom object2 = getElemen(objek2);
 
