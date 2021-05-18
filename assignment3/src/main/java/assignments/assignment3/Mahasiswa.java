@@ -45,6 +45,7 @@ class Mahasiswa extends ElemenFasilkom {
         return jumlah;
     }
 
+    // Menambahkan mata kuliah ke daftar mata kuliah yang diambil saat ini dan menambahkan mahasiswa ke daftar mahasiswa yang mengambil mata kuliah tersebut
     public void addMatkul(MataKuliah mataKuliah) {
         for (int i = 0; i < daftarMataKuliah.length; i++) {
             if (daftarMataKuliah[i] == null) {
@@ -106,14 +107,14 @@ class Mahasiswa extends ElemenFasilkom {
         String month = birthday.substring(2,4);
         String year = birthday.substring(4);
 
-        if (birthday.substring(0,1).equals("0")) {
+        if (birthday.substring(0,1).equals("0") && birthday.substring(2,3).equals("0")) {
+            date = birthday.substring(0,2).replace("0","");
+            month = birthday.substring(2,4).replace("0","");
+        }
+        else if (birthday.substring(0,1).equals("0")) {
             date = birthday.substring(0,2).replace("0","");
         }
         else if (birthday.substring(2,3).equals("0")) {
-            month = birthday.substring(2,4).replace("0","");
-        }
-        else if (birthday.substring(0,1).equals("0") && birthday.substring(2,3).equals("0")) {
-            date = birthday.substring(0,2).replace("0","");
             month = birthday.substring(2,4).replace("0","");
         }
 

@@ -275,7 +275,7 @@ public class Main {
                     ranking[j] = elemen;
                 }
                 else if (ranking[i].getFriendship() == ranking[j].getFriendship()) {
-                    if (ranking[i].getNama().charAt(0) > ranking[j].getNama().charAt(0)) {
+                    if (ranking[i].getNama().compareTo(ranking[j].getNama()) > 0) {
                         elemen = ranking[i];
                         ranking[i] = ranking[j];
                         ranking[j] = elemen;
