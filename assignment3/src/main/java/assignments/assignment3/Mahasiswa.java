@@ -47,25 +47,30 @@ class Mahasiswa extends ElemenFasilkom {
 
     // Menambahkan mata kuliah ke daftar mata kuliah yang diambil saat ini dan menambahkan mahasiswa ke daftar mahasiswa yang mengambil mata kuliah tersebut
     public void addMatkul(MataKuliah mataKuliah) {
+        boolean ada = false;
         for (int i = 0; i < daftarMataKuliah.length; i++) {
-            if (daftarMataKuliah[i] == null) {
+            if (daftarMataKuliah[i] != null) {
+                if (daftarMataKuliah[i].getNama().equals(mataKuliah.getNama())) {
+                    ada = true;
+                    System.out.println("[DITOLAK] " + mataKuliah + " telah diambil sebelumnya");
+                    break;
+                }
+            }
+        }
+
+        for (int j = 0; j < daftarMataKuliah.length; j++) {
+            if (ada == false) {
                 if (mataKuliah.getKapasitas() <= mataKuliah.getJumlahMahasiswa()) {
                     System.out.println("[DITOLAK] " + mataKuliah + " telah penuh kapasitasnya");
                     break;
                 }
-                
-                // Menambahkan mata kuliah ke daftar mata kuliah yang diambil saat ini dan menambahkan mahasiswa ke daftar mahasiswa yang mengambil mata kuliah tersebut
                 else {
-                    daftarMataKuliah[i] = mataKuliah;
-                    daftarMataKuliah[i].addMahasiswa(this);
-                    System.out.println(this.getNama() + " berhasil menambahkan mata kuliah " + mataKuliah);
-                    break;
-                }
-            }
-            else {
-                if (daftarMataKuliah[i].getNama().equals(mataKuliah.getNama())) {
-                    System.out.println("[DITOLAK] " + mataKuliah + " telah diambil sebelumnya");
-                    break;
+                    if (daftarMataKuliah[j] == null) {
+                        daftarMataKuliah[j] = mataKuliah;
+                        daftarMataKuliah[j].addMahasiswa(this);
+                        System.out.println(this.getNama() + " berhasil menambahkan mata kuliah " + mataKuliah);
+                        break;
+                    }
                 }
             }
         }
