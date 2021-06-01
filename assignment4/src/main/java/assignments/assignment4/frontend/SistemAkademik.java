@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import assignments.assignment4.backend.*;
 
 public class SistemAkademik {
-
-    
     public static void main(String[] args) { 
         new SistemAkademikGUI();
     }
@@ -23,15 +21,12 @@ class SistemAkademikGUI extends JFrame{
 
     public SistemAkademikGUI(){
 
-        // Membuat Frame
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(500, 500);
-        // TODO: Tambahkan hal-hal lain yang diperlukan
+        frame.setTitle("Administrator - Sistem Akademik");
         
         new HomeGUI(frame, daftarMahasiswa, daftarMataKuliah);
         frame.setVisible(true);
-
-
     }
 }
