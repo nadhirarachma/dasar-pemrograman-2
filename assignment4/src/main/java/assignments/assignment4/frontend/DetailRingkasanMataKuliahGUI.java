@@ -14,6 +14,8 @@ public class DetailRingkasanMataKuliahGUI {
     private Font fontMatkul = new Font("Century Gothic", Font.BOLD, 12);
 
     public DetailRingkasanMataKuliahGUI(JFrame frame, MataKuliah mataKuliah, ArrayList<Mahasiswa> daftarMahasiswa, ArrayList<MataKuliah> daftarMataKuliah){
+        
+        this.mataKuliah = mataKuliah;
 
         // Initializing panel and setting BoxLayout
         JPanel panel = new JPanel();
@@ -41,10 +43,8 @@ public class DetailRingkasanMataKuliahGUI {
             panel.add(Box.createRigidArea(new Dimension(0, 10)));
         }
 
-        this.mataKuliah = mataKuliah;
-        JLabel mhs = new JLabel();
         if (mataKuliah.getJumlahMahasiswa() == 0) {
-            mhs.setText("Belum ada mahasiswa yang mengambil mata kuliah ini.");
+            JLabel mhs = new JLabel("Belum ada mahasiswa yang mengambil mata kuliah ini.");
             mhs.setFont(fontMatkul);
             mhs.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -54,7 +54,7 @@ public class DetailRingkasanMataKuliahGUI {
         else {
             // Mencetak daftar mahasiswa
             for (int i = 0; i < mataKuliah.getJumlahMahasiswa(); i++) {
-                mhs = new JLabel((i+1) + ". " + getSortedMhs()[i]);
+                JLabel mhs = new JLabel((i+1) + ". " + getSortedMhs()[i]);
                 mhs.setFont(fontMatkul);
                 mhs.setAlignmentX(Component.CENTER_ALIGNMENT);
                 

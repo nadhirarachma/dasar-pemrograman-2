@@ -15,6 +15,8 @@ public class TambahMataKuliahGUI extends JFrame {
 
     public TambahMataKuliahGUI(JFrame frame, ArrayList<Mahasiswa> daftarMahasiswa, ArrayList<MataKuliah> daftarMataKuliah){
 
+        this.daftarMataKuliah = daftarMataKuliah;
+        
         // Initializing panel and setting BoxLayout
         JPanel panel = new JPanel();
         panel.setBackground(new Color(188, 197, 254));
@@ -62,7 +64,6 @@ public class TambahMataKuliahGUI extends JFrame {
         panel.add(backButton);
         panel.add(Box.createRigidArea(new Dimension(0, 10)));
         
-        this.daftarMataKuliah = daftarMataKuliah;
         addButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 

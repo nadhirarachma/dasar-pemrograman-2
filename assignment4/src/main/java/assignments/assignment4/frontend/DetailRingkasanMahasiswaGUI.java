@@ -15,6 +15,8 @@ public class DetailRingkasanMahasiswaGUI {
 
     public DetailRingkasanMahasiswaGUI(JFrame frame, Mahasiswa mahasiswa, ArrayList<Mahasiswa> daftarMahasiswa, ArrayList<MataKuliah> daftarMataKuliah){
 
+        this.mahasiswa = mahasiswa;
+
         // Initializing panel and setting BoxLayout
         JPanel panel = new JPanel();
         panel.setBackground(new Color(188, 197, 254));
@@ -54,7 +56,6 @@ public class DetailRingkasanMahasiswaGUI {
         hasil.setAlignmentX(Component.CENTER_ALIGNMENT);
         aman.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        this.mahasiswa = mahasiswa;
         if (mahasiswa.getBanyakMatkul() == 0) {
             JLabel kosong = new JLabel("Belum ada mata kuliah yang diambil.");
             kosong.setFont(fontMatkul);
@@ -73,15 +74,15 @@ public class DetailRingkasanMahasiswaGUI {
                 JLabel matkul = new JLabel((i+1) + ". " + getSortedMatkul()[i]);
                 matkul.setFont(fontMatkul);
                 matkul.setAlignmentX(Component.CENTER_ALIGNMENT);
+
                 panel.add(matkul);
                 panel.add(Box.createRigidArea(new Dimension(0, 10)));
             }
 
             panel.add(totalSKS);
             panel.add(Box.createRigidArea(new Dimension(0, 10)));
-            
-            mahasiswa.cekIRS();
 
+            mahasiswa.cekIRS();
             panel.add(hasil);
             panel.add(Box.createRigidArea(new Dimension(0, 10)));
 
@@ -95,6 +96,7 @@ public class DetailRingkasanMahasiswaGUI {
                     JLabel masalahIRS = new JLabel((i+1) + ". " + mahasiswa.getMasalahIRS()[i]);
                     masalahIRS.setFont(fontMatkul);
                     masalahIRS.setAlignmentX(Component.CENTER_ALIGNMENT);
+
                     panel.add(masalahIRS);
                     panel.add(Box.createRigidArea(new Dimension(0, 10)));
                 }
