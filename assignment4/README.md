@@ -59,7 +59,8 @@ direktori `src\main\java`, *compile* semua berkas `.java` kamu, dan jalankan
 
 ```bash
 > cd src\main\java
-src\main\java> javac assignments\assignment4\*.java
+src\main\java> javac assignments\assignment4\backend\*.java
+src\main\java> javac assignments\assignment4\frontend\*.java
 src\main\java> java assignments.assignment4.frontend.SistemAkademik
 ```
 
