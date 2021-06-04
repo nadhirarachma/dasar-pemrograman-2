@@ -31,7 +31,7 @@ public class TambahMahasiswaGUI{
         JTextField namaMhs = new JTextField(20);
         JTextField npmMhs = new JTextField(20);
         
-        // Initializing Labels
+        // Initializing Labels and Add Component to Panel
         String[] deskripsi = new String[]{"Nama:", "NPM:"};
         JTextField[] field = new JTextField[]{namaMhs, npmMhs};
 
@@ -39,7 +39,7 @@ public class TambahMahasiswaGUI{
             JLabel data = new JLabel(deskripsi[i]);
             data.setFont(SistemAkademikGUI.fontGeneral);
             data.setAlignmentX(Component.CENTER_ALIGNMENT);
-            field[i].setMaximumSize(npmMhs.getPreferredSize());
+            field[i].setMaximumSize(field[i].getPreferredSize());
 
             panel.add(data);
             panel.add(Box.createRigidArea(new Dimension(0, 10)));

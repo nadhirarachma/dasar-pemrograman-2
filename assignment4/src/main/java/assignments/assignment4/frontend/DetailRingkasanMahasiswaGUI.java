@@ -28,7 +28,7 @@ public class DetailRingkasanMahasiswaGUI {
         panel.add(titleLabel);
         panel.add(Box.createRigidArea(new Dimension(0, 20)));
 
-        // Initializing Labels
+       // Initializing Labels and Add Component to Panel
         String[] deskripsi = new String[]{"Nama: ", "NPM: ", "Jurusan: ", "Daftar Mata Kuliah:"};
         String[] data = new String[]{mahasiswa.getNama(), mahasiswa.getJurusan(), Long.toString(mahasiswa.getNpm()), ""};
 
@@ -41,7 +41,7 @@ public class DetailRingkasanMahasiswaGUI {
             panel.add(Box.createRigidArea(new Dimension(0, 10)));
         }
 
-        // Initializing Labels
+        // Initializing Labels and Set Alignment
         JLabel totalSKS = new JLabel("Total SKS: " + mahasiswa.getTotalSKS());
         JLabel hasil = new JLabel("Hasil Pengecekan IRS:");
         JLabel aman = new JLabel("IRS tidak bermasalah.");

@@ -33,7 +33,7 @@ public class TambahMataKuliahGUI extends JFrame {
         JTextField sksMatkul = new JTextField(20);
         JTextField kapasitasMatkul = new JTextField(20);
 
-        // Initializing Labels
+        // Initializing Labels and Add Component to Panel
         String[] deskripsi = new String[]{"Kode Mata Kuliah:", "Nama Mata Kuliah:", "SKS:", "Kapasitas:"};
         JTextField[] field = new JTextField[]{kodeMatkul, namaMatkul, sksMatkul, kapasitasMatkul};
 

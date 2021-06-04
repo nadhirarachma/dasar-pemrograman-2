@@ -47,6 +47,7 @@ public class TambahIRSGUI {
         JComboBox<String> sortedDaftarMatkul = new JComboBox<>(getSortedMatkul());
         sortedDaftarMatkul.setMaximumSize(sortedDaftarMatkul.getPreferredSize());
 
+        // Adding component to panel
         panel.add(npm);
         panel.add(Box.createRigidArea(new Dimension(0, 10)));
         panel.add(daftarNPM);

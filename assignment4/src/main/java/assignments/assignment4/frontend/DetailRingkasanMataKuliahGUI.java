@@ -28,7 +28,7 @@ public class DetailRingkasanMataKuliahGUI {
         panel.add(titleLabel);
         panel.add(Box.createRigidArea(new Dimension(0, 20)));
 
-        // Initializing Labels
+        // Initializing Labels and Add Component to Panel
         String[] deskripsi = new String[]{"Nama mata kuliah: ", "Kode: ", "SKS: ", "Jumlah mahasiswa: ", "Kapasitas: ", "Daftar Mahasiswa:"};
         String[] data = new String[]{mataKuliah.getNama(), mataKuliah.getKode(), Integer.toString(mataKuliah.getSKS()), Integer.toString(mataKuliah.getJumlahMahasiswa()), Integer.toString(mataKuliah.getKapasitas()), ""};
         
